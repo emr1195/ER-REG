@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploradores del Rey Panamá</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white shadow-lg rounded-lg p-6 max-w-lg w-full">
+    <div class="flex justify-center mb-4">
+      <img src="logo.png" alt="Logo" class="h-36 w-32">
+    </div>
+    <h1 class="text-2xl font-bold text-center text-gray-600 mb-6">Formulario de Inscripción</h1>
+
+    <form id="registerForm" class="space-y-6">
+      
+      <div>
+        <!-- <label for="name" class="block text-lg font-bold text-gray-700">Nombre</label> -->
+        <input type="text" id="name" name="name" class="p-4 placeholder-gray-600 bg-gray-200 mt-2 block w-full h-12 rounded-md  shadow-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Nombre" required>
+      </div>
+      <div>
+        <!-- <label for="lastname" class="block text-lg font-bold text-gray-700">Apellido</label> -->
+        <input type="text" id="lastname" name="lastname" class="p-4 placeholder-gray-600 bg-gray-200 mt-2 block w-full h-12 rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Apellido" required>
+      </div>
+      <div>
+        <!-- <label for="lastname" class="block text-lg font-bold text-gray-700">Cedula</label> -->
+        <input type="text" id="id" name="id" class="p-4 placeholder-gray-600 bg-gray-200 mt-2 block w-full h-12 rounded-md border-gray- shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Cedula" required>
+      </div>
+      
+      <div>
+        <!-- <label for="age" class="block text-lg font-bold text-gray-700">Edad</label> -->
+        <input type="text" id="age" name="age" min="1" class="p-4 placeholder-gray-600 bg-gray-200 text-center w-2 mt-2 block w-[70px] h-[45px] rounded-md border-gray-300 shadow-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm sm:w-16" placeholder="Edad" required>
+      </div>
+      
+      <div>
+        <!-- <label for="address" class="block text-lg font-bold text-gray-700">Dirección</label> -->
+        <input type="text" id="address" name="address" class="p-4 placeholder-gray-600 bg-gray-200 mt-1 block w-full h-12 rounded-md border-gray-300 shadow-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Dirección" required>
+      </div>
+      
+      <div>
+        <!-- <label for="church" class="block text-lg font-bold text-gray-700">Iglesia a la que asiste</label> -->
+        <select id="church" name="church" class=" bg-gray-200 mt-4 p-2 block w-full h-14 rounded-md border-gray-300 shadow-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+          <option value=""  hidden selected class="bg-blue-100">Iglesia a la que asiste</option>
+          <option value="catedral de vida">Catedral de Vida</option>
+          <option value="morada santa">Morada Santa</option>
+          <option value="maranatha">Maranatha</option>
+          <option value="templo genesis">Templo Genesis</option>
+          <option value="la fe">La Fe</option>
+          <option value="suriel">Suriel</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit" class="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow">
+          Registrarse
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+  import { getDatabase, ref, push, get, query, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyC1v68q4JAT7-UPLxx7szlw09m-Gp-kf98",
+    authDomain: "registro-er-pty.firebaseapp.com",
+    databaseURL: "https://registro-er-pty-default-rtdb.firebaseio.com",
+    projectId: "registro-er-pty",
+    storageBucket: "registro-er-pty.appspot.com",
+    messagingSenderId: "129034311168",
+    appId: "1:129034311168:web:7e43faa000eb0459ef6ae5",
+    measurementId: "G-QWBYRGGRF5",
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  
+  document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); 
+    
+    
+    const name = document.getElementById('name').value;
+    const lastname = document.getElementById('lastname').value;
+    const id = document.getElementById('id').value.trim();
+    const age = document.getElementById('age').value;
+    const address = document.getElementById('address').value;
+    const church = document.getElementById('church').value;
+
+    
+    const registrosRef = ref(database, 'registros');
+
+    try {
+      const registrosQuery = query(registrosRef, orderByChild('id'), equalTo(id));
+      const snapshot = await get(registrosQuery);
+
+      if (snapshot.exists()) {
+        alert('Este usuario ya está registrado.'); 
+        return;
+      }
+
+      await push(registrosRef, { name, lastname, id, age, address, church });
+      alert('Registro exitoso');
+      document.getElementById('registerForm').reset(); 
+    } catch (error) {
+      console.error('Error en el registro:', error);
+      alert('Hubo un error en tu registro. Intenta de nuevo.');
+    }
+  });
+</script>
+
+
+</html>
