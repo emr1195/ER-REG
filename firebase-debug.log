@@ -1,0 +1,74 @@
+[debug] [2024-11-22T05:53:48.898Z] ----------------------------------------------------------------------
+[debug] [2024-11-22T05:53:48.903Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\enock\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-11-22T05:53:48.904Z] CLI Version:   13.27.0
+[debug] [2024-11-22T05:53:48.904Z] Platform:      win32
+[debug] [2024-11-22T05:53:48.904Z] Node Version:  v20.14.0
+[debug] [2024-11-22T05:53:48.904Z] Time:          Fri Nov 22 2024 00:53:48 GMT-0500 (Eastern Standard Time)
+[debug] [2024-11-22T05:53:48.905Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-11-22T05:53:48.916Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-11-22T05:53:48.917Z] > authorizing via signed-in user (enockm1120@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\enock\Desktop\Formulario
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-11-22T05:55:48.990Z] Checked if tokens are valid: true, expires at: 1732258410645
+[debug] [2024-11-22T05:55:48.991Z] Checked if tokens are valid: true, expires at: 1732258410645
+[debug] [2024-11-22T05:55:48.994Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/availableProjects pageSize=100
+[debug] [2024-11-22T05:55:49.762Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/availableProjects 200
+[debug] [2024-11-22T05:55:49.763Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/availableProjects [omitted]
+[debug] [2024-11-22T05:57:34.194Z] ----------------------------------------------------------------------
+[debug] [2024-11-22T05:57:34.197Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\enock\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-11-22T05:57:34.198Z] CLI Version:   13.27.0
+[debug] [2024-11-22T05:57:34.198Z] Platform:      win32
+[debug] [2024-11-22T05:57:34.198Z] Node Version:  v20.14.0
+[debug] [2024-11-22T05:57:34.199Z] Time:          Fri Nov 22 2024 00:57:34 GMT-0500 (Eastern Standard Time)
+[debug] [2024-11-22T05:57:34.199Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-11-22T05:57:34.208Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-11-22T05:57:34.209Z] > authorizing via signed-in user (enockm1120@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\enock\Desktop\Formulario
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2024-11-22T05:58:40.529Z] Checked if tokens are valid: true, expires at: 1732258410645
+[debug] [2024-11-22T05:58:40.530Z] Checked if tokens are valid: true, expires at: 1732258410645
+[debug] [2024-11-22T05:58:40.532Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2024-11-22T05:58:40.532Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"ER-REG","name":"ER-Reg"}
+[debug] [2024-11-22T05:58:41.591Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 400
+[debug] [2024-11-22T05:58:41.591Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":400,"message":"field [project_id] has issue [project_id contains invalid characters]","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"project_id","description":"project_id contains invalid characters"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
+[debug] [2024-11-22T05:58:42.199Z] FirebaseError: Request to https://cloudresourcemanager.googleapis.com/v1/projects had HTTP Error: 400, field [project_id] has issue [project_id contains invalid characters]
+    at responseToError (C:\Users\enock\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:52:12)
+    at RetryOperation._fn (C:\Users\enock\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
